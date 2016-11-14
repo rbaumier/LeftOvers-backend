@@ -1,0 +1,25 @@
+{
+  "name": "workshop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "engines": {
+    "node": "6"
+  },
+  "dependencies": {
+    "assert": "^1.4.1",
+    "async": "^2.1.2",
+    "boom": "^4.2.0",
+    "common-env": "^6.0.1",
+    "debug": "^2.3.2",
+    "hapi": "^15.2.0",
+    "hapi-swagger": "^7.4.0",
+    "inert": "^4.0.2",
+    "joi": "^9.2.0",
+    "joi-objectid": "^2.0.0",
+    "lodash": "^4.16.6",
+    "vision": "^4.1.0",
+    "when": "^3.7.7",
+    "winston": "^2.3.0"
+  }
+}

@@ -5,7 +5,7 @@ create table dealers (
   id uuid primary key not null default uuid_generate_v4(),
   email varchar(255) not null,
   password char(60) not null,
-  title varchar(255) not null,
+  name varchar(255) not null,
   description text not null,
   picture varchar(255),
   address varchar(255),

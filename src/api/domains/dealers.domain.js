@@ -1,13 +1,21 @@
 'use strict';
 
-module.exports = (db, defaultCallback, genHash) => {
+module.exports = (db, defaultCallback, genHash, getGeolocation) => {
   return {
     findAll(f) {
       db.dealers.find({}, defaultCallback(f));
     },
 
     create(body, f) {
-      db.dealers.insert(body, defaultCallback(f));
+      genHash(body.password, (password) => {
+        getGeolocation(body.geolocation, (err, geolocation) => {
+          if (err) {
+            return f(Boom.wrap(err));
+          }
+          const user = _.assign({}, body, pwAndGeo);
+          db.users.insert(user, defaultCallback(f));
+        });
+      });
     },
 
     findById(id, f) {

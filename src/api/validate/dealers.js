@@ -5,7 +5,7 @@ module.exports = (Joi) => {
   const payload = {
     email: Joi.string().email().required(),
     password: Joi.string().required(),
-    title: Joi.string().min(2).max(255).required(),
+    name: Joi.string().min(2).max(255).required(),
     description: Joi.string().min(2).max(1000).required(),
     picture: Joi.string().uri(),
     address: Joi.string().min(2).max(500).required(),

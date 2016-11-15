@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (db, defaultCallback) => {
+module.exports = (db, defaultCallback, genHash) => {
   return {
     findAll(f) {
       db.dealers.find({}, defaultCallback(f));

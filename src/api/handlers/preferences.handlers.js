@@ -2,24 +2,16 @@
 
 module.exports = ({ preferences }, defaultCallback) => {
   return {
-    findAll(request, reply) {
-      preferences.findAll(defaultCallback(reply));
+    findByUserId(request, reply) {
+      users.findByUserId(request.params.user_id, defaultCallback(reply));
     },
 
-    create(body, f) {
-      preferences.create(body, defaultCallback(reply));
+    upsertByUserId(request, reply) {
+      users.upsertByUserId(request.payload, defaultCallback(reply));
     },
 
-    findById(id, f) {
-      preferences.findById(id, defaultCallback(reply));
-    },
-
-    updateById(body, f) {
-      preferences.update(body, defaultCallback(reply));
-    },
-
-    removeById(id, f) {
-      preferences.removeById(id, defaultCallback(reply));
+    removeByUserId(request, reply) {
+      users.removeByUserId(request.params.user_id, defaultCallback(reply));
     }
   };
 };

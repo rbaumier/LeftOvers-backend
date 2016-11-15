@@ -6,20 +6,20 @@ module.exports = ({ deals }, defaultCallback) => {
       deals.findAll(defaultCallback(reply));
     },
 
-    create(body, f) {
-      deals.create(body, defaultCallback(reply));
+    create(request, reply) {
+      deals.create(request.payload, defaultCallback(reply));
     },
 
-    findById(id, f) {
-      deals.findById(id, defaultCallback(reply));
+    findById(request, reply) {
+      deals.findById(request.params.id, defaultCallback(reply));
     },
 
-    updateById(body, f) {
-      deals.update(body, defaultCallback(reply));
+    updateById(request, reply) {
+      deals.update(request.payload, defaultCallback(reply));
     },
 
-    removeById(id, f) {
-      deals.removeById(id, defaultCallback(reply));
+    removeById(request, reply) {
+      deals.removeById(request.params.id, defaultCallback(reply));
     }
   };
 };

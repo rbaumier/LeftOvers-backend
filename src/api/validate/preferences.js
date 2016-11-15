@@ -8,19 +8,17 @@ module.exports = (Joi) => {
   };
 
   return {
-    create: { payload },
-
-    findById: {
-      params: params
+    findByUserId: {
+      params
     },
 
-    updateById: {
+    upsertByUserId: {
       payload,
-      params: params
+      params
     },
 
-    removeById: {
-      params: params
+    removeByUserId: {
+      params
     }
   };
 };

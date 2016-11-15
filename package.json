@@ -9,6 +9,7 @@
   "dependencies": {
     "assert": "^1.4.1",
     "async": "^2.1.2",
+    "bcrypt": "^0.8.7",
     "boom": "^4.2.0",
     "common-env": "^6.0.1",
     "debug": "^2.3.2",

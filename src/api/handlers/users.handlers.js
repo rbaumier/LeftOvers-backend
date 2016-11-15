@@ -6,20 +6,20 @@ module.exports = ({ users }, defaultCallback) => {
       users.findAll(defaultCallback(reply));
     },
 
-    create(body, f) {
-      users.create(body, defaultCallback(reply));
+    create(request, reply) {
+      users.create(request.payload, defaultCallback(reply));
     },
 
-    findById(id, f) {
-      users.findById(id, defaultCallback(reply));
+    findById(request, reply) {
+      users.findById(request.params.user_id, defaultCallback(reply));
     },
 
-    updateById(body, f) {
-      users.update(body, defaultCallback(reply));
+    updateById(request, reply) {
+      users.updateById(request.params.user_id, request.payload, defaultCallback(reply));
     },
 
-    removeById(id, f) {
-      users.removeById(id, defaultCallback(reply));
+    removeById(request, reply) {
+      users.removeById(request.params.user_id, defaultCallback(reply));
     }
   };
 };

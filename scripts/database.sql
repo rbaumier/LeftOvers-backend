@@ -8,7 +8,7 @@ create table dealers (
   title varchar(255) not null,
   description text not null,
   picture varchar(255),
-  adresse varchar(255),
+  address varchar(255),
   geolocation geography(point, 4326),
   phone varchar(12) not null,
   createdAt timestamp with time zone not null default now(),
@@ -21,7 +21,7 @@ create table users (
   lastname varchar(100),
   email varchar(255) not null,
   password char(60) not null,
-  addresse varchar(255),
+  address varchar(255),
   geolocation geography(point, 4326),
   createdAt timestamp with time zone not null default now(),
   deletedAt timestamp with time zone
@@ -48,7 +48,7 @@ create table deals (
   quantity integer not null,
   createdAt timestamp with time zone not null default now(),
   deletedAt timestamp with time zone,
-  dealer_id uuid references delears(id) not null
+  dealer_id uuid references dealers(id) not null
 );
 
 create table ratings (

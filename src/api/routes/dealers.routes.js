@@ -20,7 +20,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'GET',
-    path: '/dealers/{id}',
+    path: '/dealers/{dealer_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.findById,
       validate: validate.dealers.findById
@@ -29,7 +29,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'PUT',
-    path: '/dealers/{id}',
+    path: '/dealers/{dealer_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.updateById,
       validate: validate.dealers.updateById
@@ -38,7 +38,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'DELETE',
-    path: '/dealers/{id}',
+    path: '/dealers/{dealer_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.removeById,
       validate: validate.dealers.removeById

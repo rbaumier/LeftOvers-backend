@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (db, decaultCallback) => {
+module.exports = (db, defaultCallback) => {
   return {
     findAll(f) {
       db.ratings.find({}, defaultCallback(f));

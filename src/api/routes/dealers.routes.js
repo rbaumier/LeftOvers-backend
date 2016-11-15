@@ -5,7 +5,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     method: 'GET',
     path: '/dealers',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.todos.findAll,
+      handler: handlers.dealers.findAll,
     })
   });
 
@@ -13,8 +13,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     method: 'POST',
     path: '/dealers',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.todos.create,
-      validate: validate.todos.create
+      handler: handlers.dealers.create,
+      validate: validate.dealers.create
     })
   });
 
@@ -22,8 +22,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     method: 'GET',
     path: '/dealers/{id}',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.todos.findById,
-      validate: validate.todos.findById
+      handler: handlers.dealers.findById,
+      validate: validate.dealers.findById
     })
   });
 
@@ -31,8 +31,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     method: 'PUT',
     path: '/dealers/{id}',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.todos.updateById,
-      validate: validate.todos.updateById
+      handler: handlers.dealers.updateById,
+      validate: validate.dealers.updateById
     })
   });
 
@@ -40,8 +40,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     method: 'DELETE',
     path: '/dealers/{id}',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.todos.removeById,
-      validate: validate.todos.removeById
+      handler: handlers.dealers.removeById,
+      validate: validate.dealers.removeById
     })
   });
 };

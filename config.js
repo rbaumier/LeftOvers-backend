@@ -7,6 +7,9 @@ module.exports = (logger) => {
       jwt2: {
         secret: 'NeverShareYourSecret'
       }
+    },
+    postgres: {
+      connectionString: 'postgres://user:password@localhost/db_name'
     }
   });
 };

@@ -4,9 +4,11 @@ const Inert = require('inert');
 const Vision = require('vision');
 const HapiSwagger = require('hapi-swagger');
 const jwt2Auth = require('hapi-auth-jwt2');
+const Massive = require('massive');
 
 module.exports = (server, packageJSON, f) => {
-  const domains = require('./domains')();
+  const db = Massive.connectSync(config.postgres);
+  const domains = require('./domains')(db);
   const { AuthService } = require('./services')(domains);
   const handlers = require('./handlers')();
   const validate = require('./validate')();

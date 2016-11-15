@@ -17,7 +17,6 @@
     "hapi-swagger": "^7.4.0",
     "inert": "^4.0.2",
     "joi": "^9.2.0",
-    "joi-objectid": "^2.0.0",
     "lodash": "^4.16.6",
     "vision": "^4.1.0",
     "when": "^3.7.7",

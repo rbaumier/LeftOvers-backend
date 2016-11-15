@@ -20,7 +20,12 @@ module.exports = (db) => {
   };
 
   const getGeolocation = ([latitude, longitude]) => {
-
+    db.st_geographyfromtext(`SRID=4326;POINT(${latitude} ${longitude})`, (err, res) => {
+      f(err, {
+        password: password,
+        geolocation: res[0].st_geographyfromtext
+      });
+    });
   };
 
   return {

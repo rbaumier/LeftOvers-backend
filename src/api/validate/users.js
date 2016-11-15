@@ -19,8 +19,11 @@ module.exports = (Joi) => {
     },
 
     updateById: {
-      payload,
-      params: params
+      params: params,
+      payload: _.assign({}, payload, {
+        geolocation: Joi.any().forbidden(),
+        password: Joi.any().forbidden()
+      })
     },
 
     removeById: {

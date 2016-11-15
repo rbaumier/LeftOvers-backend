@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "pm2 start pm2.json --env production"
+  },
   "engines": {
     "node": "6"
   },

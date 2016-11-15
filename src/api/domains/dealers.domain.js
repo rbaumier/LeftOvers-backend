@@ -12,8 +12,8 @@ module.exports = (db, defaultCallback, genHash, getGeolocation) => {
           if (err) {
             return f(Boom.wrap(err));
           }
-          const user = _.assign({}, body, pwAndGeo);
-          db.users.insert(user, defaultCallback(f));
+          const user = _.assign({}, body, { password, geolocation });
+          db.dealers.insert(user, defaultCallback(f));
         });
       });
     },

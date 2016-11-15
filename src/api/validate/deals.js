@@ -2,8 +2,8 @@
 
 module.exports = (Joi) => {
   const params = {
-    id: Joi.string().uuid(),
-    dealer_id: Joi.string().uuid()
+    dealer_id: Joi.string().uuid(),
+    deal_id: Joi.string().uuid()
   };
 
   const payload = {
@@ -19,6 +19,10 @@ module.exports = (Joi) => {
   return {
     create: {
       payload,
+      params: _.pick(params, 'dealer_id')
+    },
+
+    findAll: {
       params: _.pick(params, 'dealer_id')
     },
 

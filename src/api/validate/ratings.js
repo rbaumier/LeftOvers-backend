@@ -18,6 +18,10 @@ module.exports = (Joi) => {
       params: _.pick(params, 'dealer_id')
     },
 
+    findAll:{
+      params: _.pick(params, 'dealer_id')
+    },
+
     findById: {
       params
     },

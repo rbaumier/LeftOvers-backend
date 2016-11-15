@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (Joi) => {
-  const params = { id: Joi.string().uuid() };
+  const params = { dealer_id: Joi.string().uuid() };
   const payload = {
     email: Joi.string().email().required(),
     password: Joi.string().required(),

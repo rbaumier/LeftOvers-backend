@@ -5,7 +5,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     method: 'GET',
     path: '/dealers/{dealer_id}/deals',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.deals.findAll
+      handler: handlers.deals.findAll,
+      validate: validate.deals.findAll
     })
   });
 

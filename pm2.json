@@ -1,0 +1,14 @@
+{
+  "apps": [{
+    "name": "backend",
+    "script": "server.js",
+    "watch": true,
+    "ignore_watch": ["node_modules", "logs", ".idea", "tmp", ".git", "data"],
+    "exec_mode": "fork",
+    "env_staging": {},
+    "env_production": {
+      "API_PORT": "5005",
+      "POSTGRES_CONNECTIONSTRING": "postgres://localhost/leftovers"
+    }
+  }]
+}

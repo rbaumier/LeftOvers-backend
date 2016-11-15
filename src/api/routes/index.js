@@ -4,6 +4,7 @@ const defaultConfig = {
   description: 'no notes',
   notes: 'no description',
   tags: ['api'],
+  auth: false // TO REMOVE ONCE WE HAVE AUTH
 };
 
 module.exports = (server, handlers, validate) => {

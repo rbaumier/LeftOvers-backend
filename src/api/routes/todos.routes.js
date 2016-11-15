@@ -5,7 +5,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     method: 'GET',
     path: '/todos',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.todos.findAll
+      handler: handlers.todos.findAll,
     })
   });
 

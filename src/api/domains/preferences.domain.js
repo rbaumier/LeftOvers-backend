@@ -3,15 +3,12 @@
 module.exports = (db, defaultCallback) => {
   return {
     findByUserId(userId, f) {
-      db.users.findOne(id, defaultCallback(f));
+      db.preferences.findOne({ user_id: userId }, defaultCallback(f));
     },
 
     upsertByUserId(userId, body, f) {
-      db.users.update(body, defaultCallback(f));
-    },
-
-    removeByUserId(userId, f) {
-      db.users.destroy({ id }, defaultCallback(f));
+      body.user_id = userId;
+      db.preferences.save(body, defaultCallback(f));
     }
   };
 };

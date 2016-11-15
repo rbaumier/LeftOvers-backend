@@ -24,10 +24,6 @@ module.exports = (Joi) => {
         geolocation: Joi.any().forbidden(),
         password: Joi.any().forbidden()
       })
-    },
-
-    removeById: {
-      params: params
     }
   };
 };

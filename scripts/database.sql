@@ -11,8 +11,8 @@ create table dealers (
   address varchar(255),
   geolocation geography(point, 4326),
   phone varchar(12) not null,
-  createdAt timestamp with time zone not null default now(),
-  deletedAt timestamp with time zone
+  created_at timestamp with time zone not null default now(),
+  deleted_at timestamp with time zone
 );
 
 create table users (
@@ -23,8 +23,8 @@ create table users (
   password char(60) not null,
   address varchar(255),
   geolocation geography(point, 4326),
-  createdAt timestamp with time zone not null default now(),
-  deletedAt timestamp with time zone
+  created_at timestamp with time zone not null default now(),
+  deleted_at timestamp with time zone
 );
 
 -- create type categories as enum ();
@@ -32,8 +32,8 @@ create table preferences (
   id uuid primary key not null default uuid_generate_v4(),
   radiusMeter integer,
   -- categories categories[] not null,
-  createdAt timestamp with time zone not null default now(),
-  deletedAt timestamp with time zone,
+  created_at timestamp with time zone not null default now(),
+  deleted_at timestamp with time zone,
   user_id uuid references users(id) not null
 );
 
@@ -41,13 +41,13 @@ create table deals (
   id uuid primary key not null default uuid_generate_v4(),
   title varchar(100),
   description varchar(255),
-  startDate timestamp with time zone not null,
-  endDate timestamp with time zone not null,
+  start_date timestamp with time zone not null,
+  end_date timestamp with time zone not null,
   fullPrice float(4),
   promotion float(4),
   quantity integer not null,
-  createdAt timestamp with time zone not null default now(),
-  deletedAt timestamp with time zone,
+  created_at timestamp with time zone not null default now(),
+  deleted_at timestamp with time zone,
   dealer_id uuid references dealers(id) not null
 );
 
@@ -57,6 +57,6 @@ create table ratings (
   comment text not null,
   user_id uuid references users(id) not null,
   dealer_id uuid references dealers(id) not null,
-  createdAt timestamp with time zone not null default now(),
-  deletedAt timestamp with time zone
+  created_at timestamp with time zone not null default now(),
+  deleted_at timestamp with time zone
 );

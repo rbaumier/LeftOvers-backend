@@ -9,8 +9,8 @@ module.exports = (Joi) => {
   const payload = {
     title: Joi.string().min(2).max(255).required(),
     description: Joi.string().min(2).max(1000).required(),
-    startDate: Joi.date().timestamp().required(),
-    endDate: Joi.date().timestamp().required(),
+    start_date: Joi.date().timestamp().required(),
+    end_date: Joi.date().timestamp().required(),
     fullPrice: Joi.number().required(),
     promotion: Joi.number().required(),
     quantity: Joi.number().required()

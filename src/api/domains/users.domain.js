@@ -7,12 +7,12 @@ module.exports = (db, defaultCallback, genHash, getGeolocation) => {
     },
 
     create(body, f) {
-      genPassword(body.password, (password) => {
+      genHash(body.password, (password) => {
         getGeolocation(body.geolocation, (err, geolocation) => {
           if (err) {
             return f(Boom.wrap(err));
           }
-          const user = _.assign({}, body, pwAndGeo);
+          const user = _.assign({}, body, { password, geolocation });
           db.users.insert(user, defaultCallback(f));
         });
       });

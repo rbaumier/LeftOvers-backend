@@ -6,6 +6,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     path: '/users/{user_id}/preferences',
     config: _.assign({}, defaultConfig, {
       handler: handlers.preferences.findByUserId,
+      validate: validate.preferences.findByUserId
     })
   });
 
@@ -15,15 +16,6 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     config: _.assign({}, defaultConfig, {
       handler: handlers.preferences.upsertByUserId,
       validate: validate.preferences.upsertByUserId
-    })
-  });
-
-  server.route({
-    method: 'DELETE',
-    path: '/users/{user_id}/preferences',
-    config: _.assign({}, defaultConfig, {
-      handler: handlers.preferences.removeByUserId,
-      validate: validate.preferences.removeByUserId
     })
   });
 };

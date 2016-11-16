@@ -23,7 +23,7 @@ module.exports = (db, defaultCallback, genHash, getGeolocation) => {
     },
 
     updateById(body, f) {
-      body.update_at = 'now()';
+      body.updated_at = 'now()';
       db.dealers.update(body, defaultCallback(f));
     },
 

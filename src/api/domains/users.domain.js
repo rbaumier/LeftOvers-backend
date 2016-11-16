@@ -24,7 +24,7 @@ module.exports = (db, defaultCallback, genHash, getGeolocation) => {
 
     updateById(id, body, f) {
       body.id = id;
-      body.update_at = 'now()';
+      body.updated_at = 'now()';
       db.users.update(body, defaultCallback(f));
     },
 

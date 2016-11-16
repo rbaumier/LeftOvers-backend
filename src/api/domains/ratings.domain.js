@@ -15,7 +15,7 @@ module.exports = (db, defaultCallback) => {
     },
 
     updateById(body, f) {
-      body.update_at = 'now()';
+      body.updated_at = 'now()';
       db.ratings.update(body, defaultCallback(f));
     },
 

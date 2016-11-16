@@ -14,6 +14,9 @@ module.exports = (logger) => {
     },
     postgres: {
       connectionString: 'postgres://user:password@localhost/db_name'
+    },
+    routes: {
+      prefix:'/api'
     }
   });
 };

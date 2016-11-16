@@ -3,7 +3,7 @@
 module.exports = (db, defaultCallback, genHash, getGeolocation) => {
   return {
     findAll(f) {
-      db.dealers.find({}, defaultCallback(f));
+      db.dealers.find({deleted_at: null}, defaultCallback(f));
     },
 
     create(body, f) {
@@ -23,11 +23,12 @@ module.exports = (db, defaultCallback, genHash, getGeolocation) => {
     },
 
     updateById(body, f) {
+      body.update_at = 'now()';
       db.dealers.update(body, defaultCallback(f));
     },
 
     removeById(id, f) {
-      db.dealers.update({ id, deleted_at: 'now()' }, defaultCallback(f));
+      db.dealers.update({ id, updated_at: 'now()', deleted_at: 'now()' }, defaultCallback(f));
     }
   };
 };

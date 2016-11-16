@@ -3,7 +3,7 @@
 module.exports = (db, defaultCallback) => {
   return {
     findAll(f) {
-      db.ratings.find({}, defaultCallback(f));
+      db.ratings.find({deleted_at: null}, defaultCallback(f));
     },
 
     create(body, f) {
@@ -15,11 +15,12 @@ module.exports = (db, defaultCallback) => {
     },
 
     updateById(body, f) {
+      body.update_at = 'now()';
       db.ratings.update(body, defaultCallback(f));
     },
 
     removeById(id, f) {
-      db.ratings.update({ id, deleted_at: 'now()' }, defaultCallback(f));
+      db.ratings.update({ id, updated_at: 'now()', deleted_at: 'now()' }, defaultCallback(f));
     }
   };
 };

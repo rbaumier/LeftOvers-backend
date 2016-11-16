@@ -3,7 +3,7 @@
 module.exports = (db, defaultCallback) => {
   return {
     findAll(f) {
-      db.deals.find({}, defaultCallback(f));
+      db.deals.find({deleted_at: null}, defaultCallback(f));
     },
 
     create(body, f) {
@@ -15,11 +15,12 @@ module.exports = (db, defaultCallback) => {
     },
 
     updateById(body, f) {
+      body.update_at = 'now()';
       db.deals.update(body, defaultCallback(f));
     },
 
     removeById(id, f) {
-      db.deals.update({ id, deleted_at: 'now()' }, defaultCallback(f));
+      db.deals.update({ id, updated_at: 'now()', deleted_at: 'now()' }, defaultCallback(f));
     }
   };
 };

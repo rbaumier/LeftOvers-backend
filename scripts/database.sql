@@ -12,6 +12,7 @@ create table dealers (
   geolocation geography(point, 4326),
   phone varchar(12) not null,
   created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
   deleted_at timestamp with time zone
 );
 
@@ -24,6 +25,7 @@ create table users (
   address varchar(255),
   geolocation geography(point, 4326),
   created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
   deleted_at timestamp with time zone
 );
 
@@ -33,6 +35,7 @@ create table preferences (
   radiusMeter integer,
   -- categories categories[] not null,
   created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
   deleted_at timestamp with time zone,
   user_id uuid references users(id) not null
 );
@@ -47,6 +50,7 @@ create table deals (
   promotion float(4),
   quantity integer not null,
   created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
   deleted_at timestamp with time zone,
   dealer_id uuid references dealers(id) not null
 );
@@ -58,5 +62,6 @@ create table ratings (
   user_id uuid references users(id) not null,
   dealer_id uuid references dealers(id) not null,
   created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
   deleted_at timestamp with time zone
 );

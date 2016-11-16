@@ -32,8 +32,11 @@ module.exports = (server, packageJSON, f) => {
       options: {
         info: {
           title: packageJSON.name,
-          version: packageJSON.version,
+          version: packageJSON.version
         }
+      },
+      routes: {
+        prefix: config.routes.prefix
       }
     }], f);
   });

@@ -6,7 +6,10 @@ const server = new Hapi.Server();
 const packageJSON = require('./package');
 
 server.connection({
-  port: config.api.port
+  port: config.api.port,
+  routes: {
+    cors: config.api.cors
+  }
 });
 
 require('./src')(server, packageJSON, (err) => {

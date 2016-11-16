@@ -2,7 +2,6 @@
 
 module.exports = (Joi) => {
   const params = {
-    dealer_id: Joi.string().uuid(),
     deal_id: Joi.string().uuid()
   };
 
@@ -13,17 +12,18 @@ module.exports = (Joi) => {
     end_date: Joi.date().timestamp().required(),
     fullPrice: Joi.number().required(),
     promotion: Joi.number().required(),
-    quantity: Joi.number().required()
+    quantity: Joi.number().required(),
+    dealer_id: Joi.string().uuid().required()
   };
 
   return {
     create: {
       payload,
-      params: _.pick(params, 'dealer_id')
+      params
     },
 
     findAll: {
-      params: _.pick(params, 'dealer_id')
+      params
     },
 
     findById: {

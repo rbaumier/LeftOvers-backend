@@ -19,7 +19,7 @@ module.exports = ({ ratings }, defaultCallback) => {
     },
 
     removeById(request, reply) {
-      ratings.update({id:request.params.id, deleted_at:_.now()}, defaultCallback(reply));
+      ratings.removeById(request.params.dealer_id, defaultCallback(reply));
     }
   };
 };

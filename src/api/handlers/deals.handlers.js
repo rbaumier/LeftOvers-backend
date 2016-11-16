@@ -11,7 +11,7 @@ module.exports = ({ deals }, defaultCallback) => {
     },
 
     findById(request, reply) {
-      deals.findById(request.params.id, defaultCallback(reply));
+      deals.findById(request.params.deal_id, defaultCallback(reply));
     },
 
     updateById(request, reply) {
@@ -19,7 +19,7 @@ module.exports = ({ deals }, defaultCallback) => {
     },
 
     removeById(request, reply) {
-      deals.update({id:request.params.id, deleted_at:_.now()}, defaultCallback(reply));
+      dealers.removeById(request.params.deal_id, defaultCallback(reply));
     }
   };
 };

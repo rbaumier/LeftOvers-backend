@@ -46,7 +46,7 @@ create table deals (
   description varchar(255),
   start_date timestamp with time zone not null,
   end_date timestamp with time zone not null,
-  fullPrice float(4),
+  full_price float(4),
   promotion float(4),
   quantity integer not null,
   created_at timestamp with time zone not null default now(),

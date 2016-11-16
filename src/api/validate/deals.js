@@ -8,9 +8,9 @@ module.exports = (Joi) => {
   const payload = {
     title: Joi.string().min(2).max(255).required(),
     description: Joi.string().min(2).max(1000).required(),
-    start_date: Joi.date().timestamp().required(),
-    end_date: Joi.date().timestamp().required(),
-    fullPrice: Joi.number().required(),
+    start_date: Joi.date().required(),
+    end_date: Joi.date().required(),
+    full_price: Joi.number().required(),
     promotion: Joi.number().required(),
     quantity: Joi.number().required(),
     dealer_id: Joi.string().uuid().required()
@@ -18,13 +18,10 @@ module.exports = (Joi) => {
 
   return {
     create: {
-      payload,
-      params
+      payload
     },
 
-    findAll: {
-      params
-    },
+    findAll: {},
 
     findById: {
       params: params

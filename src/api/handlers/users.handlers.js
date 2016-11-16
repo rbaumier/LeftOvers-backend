@@ -19,7 +19,7 @@ module.exports = ({ users }, defaultCallback) => {
     },
 
     removeById(request, reply) {
-      users.removeById(request.params.user_id, defaultCallback(reply));
+      users.update({id:request.params.id, deleted_at:_.now()}, defaultCallback(reply));
     }
   };
 };

@@ -19,7 +19,7 @@ module.exports = ({ dealers }, defaultCallback) => {
     },
 
     removeById(request, reply) {
-      dealers.removeById(request.params.id, defaultCallback(reply));
+      dealers.update({id:request.params.id, deleted_at:_.now()}, defaultCallback(reply));
     }
   };
 };

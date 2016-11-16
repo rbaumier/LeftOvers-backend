@@ -28,7 +28,7 @@ module.exports = (db, defaultCallback, genHash, getGeolocation) => {
     },
 
     removeById(id, f) {
-      db.users.destroy({ id }, defaultCallback(f));
+      db.users.update({ id, deleted_at: 'now()' }, defaultCallback(f));
     }
   };
 };

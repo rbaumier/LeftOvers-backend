@@ -19,7 +19,7 @@ module.exports = (db, defaultCallback) => {
     },
 
     removeById(id, f) {
-      db.deals.destroy({ id }, defaultCallback(f));
+      db.deals.update({ id, deleted_at: 'now()' }, defaultCallback(f));
     }
   };
 };

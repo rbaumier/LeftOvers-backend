@@ -3,7 +3,7 @@
 module.exports = (server, handlers, validate, defaultConfig) => {
   server.route({
     method: 'GET',
-    path: '/dealers/{dealer_id}/rating',
+    path: '/api/dealers/{dealer_id}/rating',
     config: _.assign({}, defaultConfig, {
       handler: handlers.ratings.findAll,
       validate: validate.ratings.findAll
@@ -12,7 +12,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'POST',
-    path: '/dealers/{dealer_id}/rating',
+    path: '/api/dealers/{dealer_id}/rating',
     config: _.assign({}, defaultConfig, {
       handler: handlers.ratings.create,
       validate: validate.ratings.create
@@ -21,7 +21,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'PUT',
-    path: '/dealers/{dealer_id}/rating/{rating_id}',
+    path: '/api/dealers/{dealer_id}/rating/{rating_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.ratings.updateById,
       validate: validate.ratings.updateById
@@ -30,7 +30,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'DELETE',
-    path: '/dealers/{dealer_id}/rating/{rating_id}',
+    path: '/api/dealers/{dealer_id}/rating/{rating_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.ratings.removeById,
       validate: validate.ratings.removeById

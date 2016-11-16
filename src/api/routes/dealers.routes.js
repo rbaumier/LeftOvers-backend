@@ -3,15 +3,15 @@
 module.exports = (server, handlers, validate, defaultConfig) => {
   server.route({
     method: 'GET',
-    path: '/dealers',
+    path: '/api/dealers',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.dealers.findAll,
+      handler: handlers.dealers.findAll
     })
   });
 
   server.route({
     method: 'POST',
-    path: '/dealers',
+    path: '/api/dealers',
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.create,
       validate: validate.dealers.create
@@ -20,7 +20,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'GET',
-    path: '/dealers/{dealer_id}',
+    path: '/api/dealers/{dealer_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.findById,
       validate: validate.dealers.findById
@@ -29,7 +29,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'PUT',
-    path: '/dealers/{dealer_id}',
+    path: '/api/dealers/{dealer_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.updateById,
       validate: validate.dealers.updateById
@@ -38,7 +38,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'DELETE',
-    path: '/dealers/{dealer_id}',
+    path: '/api/dealers/{dealer_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.removeById,
       validate: validate.dealers.removeById

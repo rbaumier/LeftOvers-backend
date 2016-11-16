@@ -36,7 +36,7 @@ module.exports = (server, packageJSON, f) => {
         }
       },
       routes: {
-        prefix: config.routes.prefix
+        prefix: '/api'
       }
     }], f);
   });

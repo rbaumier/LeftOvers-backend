@@ -3,7 +3,7 @@
 module.exports = (server, handlers, validate, defaultConfig) => {
   server.route({
     method: 'GET',
-    path: '/users',
+    path: '/api/users',
     config: _.assign({}, defaultConfig, {
       handler: handlers.users.findAll,
     })
@@ -11,7 +11,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'POST',
-    path: '/users',
+    path: '/api/users',
     config: _.assign({}, defaultConfig, {
       handler: handlers.users.create,
       validate: validate.users.create
@@ -20,7 +20,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'GET',
-    path: '/users/{user_id}',
+    path: '/api/users/{user_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.users.findById,
       validate: validate.users.findById
@@ -29,7 +29,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'PUT',
-    path: '/users/{user_id}',
+    path: '/api/users/{user_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.users.updateById,
       validate: validate.users.updateById
@@ -38,7 +38,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'DELETE',
-    path: '/users/{user_id}',
+    path: '/api/users/{user_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.users.removeById,
       validate: validate.users.removeById

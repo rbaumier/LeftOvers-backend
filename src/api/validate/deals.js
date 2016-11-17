@@ -21,7 +21,12 @@ module.exports = (Joi) => {
       payload
     },
 
-    findAll: {},
+    findAll: {
+      query: {
+        geolocation: Joi.string().required(),
+        radius: Joi.number().integer().required()
+      }
+    },
 
     findById: {
       params: params

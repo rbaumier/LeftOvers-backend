@@ -22,7 +22,6 @@ create table users (
   lastname varchar(100),
   email varchar(255) not null,
   password char(60) not null,
-  address varchar(255),
   geolocation geography(point, 4326),
   created_at timestamp with time zone not null default now(),
   updated_at timestamp with time zone not null default now(),

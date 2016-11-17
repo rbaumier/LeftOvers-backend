@@ -19,8 +19,8 @@ module.exports = (db) => {
     });
   };
 
-  const getGeolocation = ([latitude, longitude], f) => {
-    db.st_geographyfromtext(`SRID=4326;POINT(${latitude} ${longitude})`, (err, res) => {
+  const getGeolocation = (geolocation, f) => {
+    db.st_geographyfromtext(`SRID=4326;POINT(${geolocation})`, (err, res) => {
       f(err, ((res || [])[0] || {}).st_geographyfromtext);
     });
   };

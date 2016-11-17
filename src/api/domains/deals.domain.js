@@ -14,14 +14,13 @@ module.exports = (db, defaultCallback) => {
       getPreferences(user_id, (err, preferences = {}) => {
         if (err) return f(err);
         var formatted = '';
-        if(!_.includes(geolocation, ',')) {
+        if(geolocation.length === 50) {
           formatted = `'${geolocation}'`;
         } else {
           const [lon, lat] = geolocation.split(', ');
           formatted = `Geography(ST_MakePoint(${lon}, ${lat}))`;
         }
-
-        db.run(`SELECT * FROM dealers WHERE ST_DWithin(geolocation, ${formatted}, $1)`, [preferences.radius || defaultRadius], (err, dealers) => {
+        db.run(`SELECT * FROM dealers WHERE ST_DWithin(geolocation, ${formatted}, $1)`, [preferences.radius_meter || defaultRadius], (err, dealers) => {
           if (err) return f(err);
           // now get their deals and create a nicely formatted json
           var dealerIds = _.map(dealers, 'id');

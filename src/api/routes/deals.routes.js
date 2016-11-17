@@ -7,7 +7,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     config: _.assign({}, defaultConfig, {
       handler: handlers.deals.findAll,
       validate: validate.deals.findAll,
-      auth:false
+      auth: false
     })
   });
 

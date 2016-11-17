@@ -19,7 +19,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                         }
 
                         if (!dealer) {
-                            return reply({success: false, message: 'Authentication failed. Dealer not found.'});
+                            return reply({success: false, message: 'Authentication failed. User/Dealer not found.'});
                         }
 
                         bcrypt.compare(credentials[1], dealer.password, function (err, res) {
@@ -32,7 +32,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                                 password: credentials[1],
                                 exp: Math.floor(new Date().getTime() / 1000) + 7 * 24 * 60 * 60
                             });
-                            return dealers.updateById(dealer, function(err, res){
+                            return dealers.updateById(dealer, function (err, res) {
                                 if (err) {
                                     fDebug('SQL')(err);
                                     return f(Boom.wrap(err));
@@ -55,7 +55,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                             exp: Math.floor(new Date().getTime() / 1000) + 7 * 24 * 60 * 60
                         });
 
-                        return users.updateById(user, function(err, res){
+                        return users.updateById(user, function (err, res) {
                             if (err) {
                                 fDebug('SQL')(err);
                                 return f(Boom.wrap(err));
@@ -69,7 +69,45 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
         },
 
         logout(request, reply) {
+            var token = request.headers.authorization;
+            users.findOneBy({token: token}, function (err, user) {
+                if (err) {
+                    return f(Boom.wrap(err));
+                }
 
+                if (!user) {
+                    dealers.findOneBy({token: token}, function (err, dealer) {
+                        if (err) {
+                            return f(Boom.wrap(err));
+                        }
+
+                        if (!dealer) {
+                            return reply({success: false, message: 'Authentication failed. User/Dealer not found.'});
+                        } else {
+                            dealer.token = 'null';
+                            return dealers.updateById(dealer, function (err, res) {
+                                if (err) {
+                                    fDebug('SQL')(err);
+                                    return f(Boom.wrap(err));
+                                }
+
+                                return reply({success: true, message: 'successful logout'});
+                            });
+                        }
+                    });
+                } else {
+                    user.token = 'null';
+                    return users.updateById(user, function (err, res) {
+                        if (err) {
+                            fDebug('SQL')(err);
+                            return f(Boom.wrap(err));
+                        }
+                        return reply({success: true, message: 'successful logout'});
+                    });
+                }
+
+
+            });
         }
     };
 };

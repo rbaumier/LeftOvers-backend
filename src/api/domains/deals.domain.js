@@ -7,8 +7,9 @@ module.exports = (db, defaultCallback) => {
       db.run(`SELECT * FROM dealers WHERE ST_DWithin(geolocation, Geography(ST_MakePoint(${geolocation})), $1)`, [radius], (err, dealers) => {
         if (err) return f(err);
         // now get their deals and create a nicely formatted json
+        var dealerIds = _.map(dealers, 'id');
         db.deals.find({
-          dealer_id: _.map(dealers, 'id')
+          dealer_id: _.isEmpty(dealerIds) ? ['b578eca3-079b-44f2-83da-2d6ebd034ad1'] : dealerIds // little hack here, we can't search with IN (`emptylist`) crash, so we provide a dummy uuid
         }, (err, deals) => {
           if (err) return f(err);
           const dealsWithDealer = _.map(deals, (deal) => {

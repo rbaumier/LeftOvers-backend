@@ -14,7 +14,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     path: '/api/users',
     config: _.assign({}, defaultConfig, {
       handler: handlers.users.create,
-      validate: validate.users.create
+      validate: validate.users.create,
+      auth:false
     })
   });
 

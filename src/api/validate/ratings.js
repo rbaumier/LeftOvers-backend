@@ -8,8 +8,8 @@ module.exports = (Joi) => {
 
   const payload = {
     note: Joi.number().min(0).max(5).precision(1).required(),
-    comment: Joi.string().max(1000).required(),
-    user_id: Joi.string().uuid().required(),
+    comment: Joi.string().max(1000),
+    user_id: Joi.string().uuid().required()
   };
 
   return {

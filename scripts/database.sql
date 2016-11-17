@@ -59,7 +59,7 @@ create table deals (
 create table ratings (
   id uuid primary key not null default uuid_generate_v4(),
   note integer not null,
-  comment text not null,
+  comment text null,
   user_id uuid references users(id) not null,
   dealer_id uuid references dealers(id) not null,
   created_at timestamp with time zone not null default now(),

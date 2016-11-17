@@ -37,7 +37,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                                 dealer.first_login = false;
                             }
 
-                            return dealers.updateById(user.id, dealer.id, dealer, function (err, res) {
+                            return dealers.updateById(dealer.id, dealer, function (err, res) {
                                 if (err) {
                                     fDebug('SQL')(err);
                                     return f(Boom.wrap(err));

@@ -6,7 +6,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     path: '/api/deals',
     config: _.assign({}, defaultConfig, {
       handler: handlers.deals.findAll,
-      validate: validate.deals.findAll
+      validate: validate.deals.findAll,
+      auth:false
     })
   });
 
@@ -24,7 +25,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     path: '/api/deals/search',
     config: _.assign({}, defaultConfig, {
       handler: handlers.deals.search,
-      validate: validate.deals.search
+      validate: validate.deals.search,
+      auth:false
     })
   });
 
@@ -33,7 +35,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     path: '/api/deals/{deal_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.deals.findById,
-      validate: validate.deals.findById
+      validate: validate.deals.findById,
+      auth:false
     })
   });
 

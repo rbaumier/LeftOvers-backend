@@ -6,7 +6,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     path: '/api/dealers/{dealer_id}/ratings',
     config: _.assign({}, defaultConfig, {
       handler: handlers.ratings.findAll,
-      validate: validate.ratings.findAll
+      validate: validate.ratings.findAll,
+      auth:false
     })
   });
 

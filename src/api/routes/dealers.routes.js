@@ -5,7 +5,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     method: 'GET',
     path: '/api/dealers',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.dealers.findAll
+      handler: handlers.dealers.findAll,
+      auth:false
     })
   });
 
@@ -15,6 +16,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.create,
       validate: validate.dealers.create,
+      auth:false
+
     })
   });
 
@@ -23,7 +26,8 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     path: '/api/dealers/{dealer_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.findById,
-      validate: validate.dealers.findById
+      validate: validate.dealers.findById,
+      auth:false
     })
   });
 

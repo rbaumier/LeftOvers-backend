@@ -2,8 +2,8 @@
 
 module.exports = (db, defaultCallback) => {
     return {
-        findAll(f) {
-            db.ratings.find({deleted_at: null}, (err, ratings) => {
+        findAll(dealerId, f) {
+            db.ratings.find({dealer_id: dealerId, deleted_at: null}, (err, ratings) => {
                 var userIds = _.map(ratings, 'user_id');
 
                 db.users.find({

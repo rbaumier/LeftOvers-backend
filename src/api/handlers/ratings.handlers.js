@@ -3,7 +3,7 @@
 module.exports = ({ ratings }, defaultCallback) => {
   return {
     findAll(request, reply) {
-      ratings.findAll(defaultCallback(reply));
+      ratings.findAll(request.params.dealer_id, defaultCallback(reply));
     },
 
     create(request, reply) {

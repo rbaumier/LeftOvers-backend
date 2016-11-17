@@ -93,7 +93,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                         if (!dealer) {
                             return reply({success: false, message: 'Authentication failed. User/Dealer not found.'});
                         } else {
-                            dealer.token = 'null';
+                            dealer.token = null;
                             return dealers.updateById(dealer.id, dealer, function (err, res) {
                                 if (err) {
                                     fDebug('SQL')(err);
@@ -105,7 +105,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                         }
                     });
                 } else {
-                    user.token = 'null';
+                    user.token = null;
                     return users.updateById(user.id, user, function (err, res) {
                         if (err) {
                             fDebug('SQL')(err);

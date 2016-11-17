@@ -7,7 +7,7 @@ module.exports = (Joi) => {
     lastname: Joi.string().min(2).max(255),
     email: Joi.string().email().required(),
     password: Joi.string().max(30).required(),
-    geolocation: Joi.string().max(40).required()
+    geolocation: Joi.string().max(100).required()
   };
 
   return {

@@ -14,7 +14,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     path: '/api/dealers',
     config: _.assign({}, defaultConfig, {
       handler: handlers.dealers.create,
-      validate: validate.dealers.create
+      validate: validate.dealers.create,
     })
   });
 

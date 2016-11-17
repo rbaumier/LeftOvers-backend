@@ -22,6 +22,10 @@ module.exports = (db, defaultCallback, genHash, getGeolocation) => {
       db.users.findOne(id, defaultCallback(f));
     },
 
+    findOneBy(data,f){
+      db.users.findOne(data, defaultCallback(f));
+    },
+
     updateById(id, body, f) {
       body.id = id;
       body.updated_at = 'now()';

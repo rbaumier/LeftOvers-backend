@@ -8,6 +8,7 @@ module.exports = () => {
     users: require('./users')(Joi),
     preferences: require('./preferences')(Joi),
     deals: require('./deals')(Joi),
-    ratings: require('./ratings')(Joi)
+    ratings: require('./ratings')(Joi),
+    auth: require('./auth')(Joi)
   };
 };

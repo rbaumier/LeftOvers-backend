@@ -5,7 +5,7 @@ module.exports = (server, handlers, validate, defaultConfig) => {
     method: 'GET',
     path: '/api/users',
     config: _.assign({}, defaultConfig, {
-      handler: handlers.users.findAll,
+      handler: handlers.users.findAll
     })
   });
 

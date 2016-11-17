@@ -18,6 +18,10 @@ module.exports = (db, defaultCallback, genHash, getGeolocation) => {
       });
     },
 
+    findOneBy(data,f){
+      db.dealers.findOne(data, defaultCallback(f));
+    },
+
     findById(id, f) {
       db.dealers.findOne(id, defaultCallback(f));
     },

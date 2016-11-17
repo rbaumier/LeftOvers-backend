@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = (domains) => {
+module.exports = (domains, config) => {
   return {
-    AuthService: require('./AuthService')(domains)
+    AuthService: require('./AuthService')(domains, config)
   };
 };

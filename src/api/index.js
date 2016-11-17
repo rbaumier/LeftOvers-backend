@@ -9,8 +9,8 @@ const Massive = require('massive');
 module.exports = (server, packageJSON, f) => {
   const db = Massive.connectSync(config.postgres);
   const domains = require('./domains')(db);
-  const { AuthService } = require('./services')(domains);
-  const handlers = require('./handlers')(domains);
+  const { AuthService } = require('./services')(domains, config);
+  const handlers = require('./handlers')(domains, AuthService);
   const validate = require('./validate')();
   const routes = require('./routes')(server, handlers, validate);
 

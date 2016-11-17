@@ -8,5 +8,5 @@ const defaultConfig = {
 };
 
 module.exports = (server, handlers, validate) => {
-  ['deals', 'dealers', 'ratings', 'preferences', 'users'].forEach(module => require(`./${module}.routes.js`)(server, handlers, validate, defaultConfig));
+  ['deals', 'dealers', 'ratings', 'preferences', 'users', 'auth'].forEach(module => require(`./${module}.routes.js`)(server, handlers, validate, defaultConfig));
 };

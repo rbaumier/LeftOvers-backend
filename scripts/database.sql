@@ -3,8 +3,9 @@ create extension if not exists "postgis";
 
 create table dealers (
   id uuid primary key not null default uuid_generate_v4(),
-  email varchar(255) not null,
+  email varchar(255) not null unique,
   password char(60) not null,
+  token varchar(255) null,
   name varchar(255) not null,
   description text not null,
   picture varchar(255),
@@ -20,8 +21,9 @@ create table users (
   id uuid primary key not null default uuid_generate_v4(),
   firstname varchar(100),
   lastname varchar(100),
-  email varchar(255) not null,
+  email varchar(255) not null unique,
   password char(60) not null,
+  token varchar(255) null,
   geolocation geography(point, 4326),
   created_at timestamp with time zone not null default now(),
   updated_at timestamp with time zone not null default now(),

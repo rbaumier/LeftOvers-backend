@@ -1,25 +1,22 @@
 'use strict';
 var JWT = require('jsonwebtoken');
 
-module.exports = (domains, config) => {
+module.exports = ({dealers, users}, config) => {
     return {
         check(decoded, request, callback) {
             var token = request.headers.authorization;
-            console.log('je check !!', token);
 
             // do your checks to see if the token is valid
             if (!decoded.email || !decoded.password || (Math.floor(Date.now() / 1000) > decoded.exp)) {
                 return callback(null, false);
             } else {
-                domains.users.findOneBy({token: token}, function (err, user) {
+                users.findOneBy({token: token}, function (err, user) {
                     if (err) {
                         return f(Boom.wrap(err));
                     }
 
                     if (!user) {
-                        console.log('pas de user !!');
-                        domains.dealers.findOneBy({token: token}, function (err, dealer) {
-                            console.log('dealer : ', dealer);
+                        dealers.findOneBy({token: token}, function (err, dealer) {
                             if (err) {
                                 return f(Boom.wrap(err));
                             }
@@ -27,7 +24,7 @@ module.exports = (domains, config) => {
                             if (!dealer) {
                                 return callback(null, false);
                             } else {
-                                if (user.token === token) {
+                                if (dealer.token === token) {
                                     return callback(null, true);
                                 }
                                 return callback(null, true);

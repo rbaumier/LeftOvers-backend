@@ -28,8 +28,16 @@ module.exports = (Joi) => {
       }
     },
 
+    search: {
+      query: {
+        dealer_id: Joi.string().uuid(),
+      }
+    },
+
     findById: {
-      params: params
+      params: {
+        deal_id: Joi.string().uuid().required()
+      }
     },
 
     updateById: {

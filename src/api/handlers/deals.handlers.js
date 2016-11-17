@@ -10,6 +10,10 @@ module.exports = ({ deals }, defaultCallback) => {
       deals.create(request.payload, defaultCallback(reply));
     },
 
+    search(request, reply) {
+      deals.findByDealerId(request.query.dealer_id, defaultCallback(reply));
+    },
+
     findById(request, reply) {
       deals.findById(request.params.deal_id, defaultCallback(reply));
     },

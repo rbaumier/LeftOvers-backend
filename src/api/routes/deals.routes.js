@@ -21,6 +21,15 @@ module.exports = (server, handlers, validate, defaultConfig) => {
 
   server.route({
     method: 'GET',
+    path: '/api/deals/search',
+    config: _.assign({}, defaultConfig, {
+      handler: handlers.deals.search,
+      validate: validate.deals.search
+    })
+  });
+
+  server.route({
+    method: 'GET',
     path: '/api/deals/{deal_id}',
     config: _.assign({}, defaultConfig, {
       handler: handlers.deals.findById,

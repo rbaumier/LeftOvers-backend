@@ -11,7 +11,7 @@ module.exports = ({ dealers }, defaultCallback) => {
     },
 
     findById(request, reply) {
-      dealers.findById(request.params.id, defaultCallback(reply));
+      dealers.findById(request.params.dealer_id, defaultCallback(reply));
     },
 
     updateById(request, reply) {

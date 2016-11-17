@@ -24,7 +24,7 @@ module.exports = (Joi) => {
     findAll: {
       query: {
         geolocation: Joi.string().required(),
-        radius: Joi.number().integer().required()
+        user_id: Joi.string().uuid()
       }
     },
 

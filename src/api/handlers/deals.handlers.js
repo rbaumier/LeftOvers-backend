@@ -3,7 +3,7 @@
 module.exports = ({ deals }, defaultCallback) => {
   return {
     findAll(request, reply) {
-      deals.findAll(request.query.geolocation, request.query.radius, defaultCallback(reply));
+      deals.findAll(request.query.geolocation, request.query.user_id || -1, defaultCallback(reply));
     },
 
     create(request, reply) {

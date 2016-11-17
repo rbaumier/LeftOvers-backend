@@ -35,7 +35,7 @@ create table users (
 -- create type categories as enum ();
 create table preferences (
   id uuid primary key not null default uuid_generate_v4(),
-  radiusMeter integer,
+  radius_meter integer,
   -- categories categories[] not null,
   created_at timestamp with time zone not null default now(),
   updated_at timestamp with time zone not null default now(),

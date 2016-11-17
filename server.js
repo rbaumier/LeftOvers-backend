@@ -20,7 +20,7 @@ require('./src')(server, packageJSON, (err) => {
     console.log(`Server running at ${server.info.uri}`);
 
     server.on('response', function (request) {
-      console.log(request.info.remoteAddress + ': ' + request.method.toUpperCase() + ' ' + request.url.path + ' --> ' + request.response.statusCode);
+      console.log(request.info.remoteAddress + ': ' + request.method.toUpperCase() + ' ' + request.url.path + ' --> ' + (request.response || {}).statusCode);
     });
   });
 });

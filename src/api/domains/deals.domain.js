@@ -27,7 +27,6 @@ module.exports = (db, defaultCallback) => {
           db.deals.find({
             dealer_id: _.isEmpty(dealerIds) ? ['b578eca3-079b-44f2-83da-2d6ebd034ad1'] : dealerIds // little hack here, we can't search with IN (`emptylist`) crash, so we provide a dummy uuid
           }, (err, deals) => {
-            console.log("err3:", err);
             if (err) return f(err);
             const dealsWithDealer = _.map(deals, (deal) => {
               deal.dealer = _.find(dealers, { id: deal.dealer_id });

@@ -11,7 +11,7 @@ module.exports = (db, defaultCallback) => {
                 }, (err, users) => {
                     if (err) {return f(Boom.wrap(err));}
                     const RatingsWithUser = _.map(ratings, (rating) => {
-                        rating.user = _.find(users, {id: user.id});
+                        rating.user = _.find(users, {id: rating.user_id});
                         return rating;
                     });
                     f(null, RatingsWithUser);

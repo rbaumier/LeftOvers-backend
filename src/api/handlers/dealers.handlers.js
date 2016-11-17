@@ -15,7 +15,7 @@ module.exports = ({ dealers }, defaultCallback) => {
     },
 
     updateById(request, reply) {
-      dealers.updateById(request.payload, defaultCallback(reply));
+      dealers.updateById(request.params.dealer_id, request.payload, defaultCallback(reply));
     },
 
     removeById(request, reply) {

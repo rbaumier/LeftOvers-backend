@@ -26,7 +26,8 @@ module.exports = (db, defaultCallback, genHash, getGeolocation) => {
       db.dealers.findOne(id, defaultCallback(f));
     },
 
-    updateById(body, f) {
+    updateById(id, body, f) {
+      body.id = id;
       body.updated_at = 'now()';
       db.dealers.update(body, defaultCallback(f));
     },

@@ -37,7 +37,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                                 dealer.first_login = false;
                             }
 
-                            return dealers.updateById(dealer, function (err, res) {
+                            return dealers.updateById(user.id, dealer.id, dealer, function (err, res) {
                                 if (err) {
                                     fDebug('SQL')(err);
                                     return f(Boom.wrap(err));
@@ -64,7 +64,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                             user.first_login = false;
                         }
 
-                        return users.updateById(user, function (err, res) {
+                        return users.updateById(user.id, user, function (err, res) {
                             if (err) {
                                 fDebug('SQL')(err);
                                 return f(Boom.wrap(err));
@@ -94,7 +94,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                             return reply({success: false, message: 'Authentication failed. User/Dealer not found.'});
                         } else {
                             dealer.token = 'null';
-                            return dealers.updateById(dealer, function (err, res) {
+                            return dealers.updateById(dealer.id, dealer, function (err, res) {
                                 if (err) {
                                     fDebug('SQL')(err);
                                     return f(Boom.wrap(err));
@@ -106,7 +106,7 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                     });
                 } else {
                     user.token = 'null';
-                    return users.updateById(user, function (err, res) {
+                    return users.updateById(user.id, user, function (err, res) {
                         if (err) {
                             fDebug('SQL')(err);
                             return f(Boom.wrap(err));

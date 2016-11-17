@@ -14,7 +14,7 @@ module.exports = (db, defaultCallback) => {
       getPreferences(user_id, (err, preferences = {}) => {
         if (err) return f(err);
         var formatted = '';
-        if(geolocation.length > 40) {
+        if(!_.includes(geolocation, ',')) {
           formatted = `'${geolocation}'`;
         } else {
           const [lon, lat] = geolocation.split(', ');

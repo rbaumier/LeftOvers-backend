@@ -3,7 +3,7 @@
 module.exports = (Joi) => {
   const params = {
     id: Joi.string().uuid(),
-    dealer_id: Joi.string().uuid()
+    dealer_id: Joi.string().uuid().required()
   };
 
   const payload = {

@@ -12,6 +12,7 @@ create table dealers (
   address varchar(255),
   geolocation geography(point, 4326),
   phone varchar(12) not null,
+  first_login boolean not null default true,
   created_at timestamp with time zone not null default now(),
   updated_at timestamp with time zone not null default now(),
   deleted_at timestamp with time zone
@@ -25,6 +26,7 @@ create table users (
   password char(60) not null,
   token varchar(255) null,
   geolocation geography(point, 4326),
+  first_login boolean not null default true,
   created_at timestamp with time zone not null default now(),
   updated_at timestamp with time zone not null default now(),
   deleted_at timestamp with time zone

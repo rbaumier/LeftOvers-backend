@@ -32,6 +32,11 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                                 password: credentials[1],
                                 exp: Math.floor(new Date().getTime() / 1000) + 7 * 24 * 60 * 60
                             });
+
+                            if (dealer.first_login === true) {
+                                dealer.first_login = false;
+                            }
+
                             return dealers.updateById(dealer, function (err, res) {
                                 if (err) {
                                     fDebug('SQL')(err);
@@ -54,6 +59,10 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                             password: credentials[1],
                             exp: Math.floor(new Date().getTime() / 1000) + 7 * 24 * 60 * 60
                         });
+
+                        if (user.first_login === true) {
+                            user.first_login = false;
+                        }
 
                         return users.updateById(user, function (err, res) {
                             if (err) {

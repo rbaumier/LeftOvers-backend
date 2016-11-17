@@ -32,7 +32,14 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                                 password: credentials[1],
                                 exp: Math.floor(new Date().getTime() / 1000) + 7 * 24 * 60 * 60
                             });
-                            return dealers.updateById(dealer, defaultCallback(reply));
+                            return dealers.updateById(dealer, function(err, res){
+                                if (err) {
+                                    fDebug('SQL')(err);
+                                    return f(Boom.wrap(err));
+                                }
+                                res.type = 'dealers';
+                                return reply(res);
+                            });
                         });
 
                     });
@@ -48,7 +55,14 @@ module.exports = ({ users, dealers }, defaultCallback, AuthService) => {
                             exp: Math.floor(new Date().getTime() / 1000) + 7 * 24 * 60 * 60
                         });
 
-                        return users.updateById(user, defaultCallback(reply));
+                        return users.updateById(user, function(err, res){
+                            if (err) {
+                                fDebug('SQL')(err);
+                                return f(Boom.wrap(err));
+                            }
+                            res.type = 'users';
+                            return reply(res);
+                        });
                     });
                 }
             });
